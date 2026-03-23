@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Coqo De Serena</title>
+  <meta name="description" content="Coqo De Serena — Artista">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      background: #0a0a0a;
+      color: #e8e8e8;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a {
+      color: #e8e8e8;
+      text-decoration: none;
+      transition: opacity 0.3s;
+    }
+    a:hover { opacity: 0.6; }
+
+    /* NAV */
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      padding: 1.5rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 100;
+      background: rgba(10, 10, 10, 0.85);
+      backdrop-filter: blur(8px);
+    }
+    nav .logo {
+      font-size: 0.85rem;
+      font-weight: 300;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+    }
+    nav .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+    nav .nav-links a {
+      font-size: 0.8rem;
+      font-weight: 300;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+    }
+
+    /* HERO */
+    .hero {
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 2rem;
+    }
+    .hero h1 {
+      font-size: clamp(3rem, 10vw, 8rem);
+      font-weight: 200;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      line-height: 1.1;
+    }
+    .hero p {
+      margin-top: 1.5rem;
+      font-size: 1rem;
+      font-weight: 300;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      opacity: 0.6;
+    }
+
+    /* SECTIONS */
+    section {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 6rem 2rem;
+    }
+    .section-title {
+      font-size: 0.75rem;
+      font-weight: 400;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      opacity: 0.4;
+      margin-bottom: 2.5rem;
+    }
+
+    /* BIO */
+    .bio p {
+      font-size: 1.15rem;
+      font-weight: 300;
+      line-height: 1.8;
+      max-width: 650px;
+    }
+
+    /* PROJECTS */
+    .projects-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+    .project-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      padding-bottom: 1.5rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+    .project-item:last-child { border-bottom: none; }
+    .project-name {
+      font-size: 1.4rem;
+      font-weight: 300;
+      letter-spacing: 0.05em;
+    }
+    .project-year {
+      font-size: 0.85rem;
+      font-weight: 300;
+      opacity: 0.4;
+    }
+
+    /* CONTACT */
+    .contact-content {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    .contact-content a {
+      font-size: 1.15rem;
+      font-weight: 300;
+      text-decoration: underline;
+      text-underline-offset: 4px;
+    }
+
+    /* FOOTER */
+    footer {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 3rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      font-size: 0.75rem;
+      font-weight: 300;
+      opacity: 0.4;
+    }
+
+    /* MOBILE */
+    @media (max-width: 600px) {
+      nav { padding: 1rem 1.5rem; }
+      nav .nav-links { gap: 1.2rem; }
+      nav .nav-links a { font-size: 0.7rem; }
+      section { padding: 4rem 1.5rem; }
+      .project-item { flex-direction: column; gap: 0.3rem; }
+      footer { flex-direction: column; gap: 0.5rem; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="#" class="logo">Coqo De Serena</a>
+    <ul class="nav-links">
+      <li><a href="#bio">Bio</a></li>
+      <li><a href="#proyectos">Proyectos</a></li>
+      <li><a href="#contacto">Contacto</a></li>
+    </ul>
+  </nav>
+
+  <div class="hero">
+    <h1>Coqo De Serena</h1>
+    <p>Artista</p>
+  </div>
+
+  <section id="bio">
+    <div class="section-title">Bio</div>
+    <div class="bio">
+      <p>
+        Texto de biografía aquí. Breve descripción sobre Coqo De Serena,
+        su trayectoria, estilo y visión artística.
+      </p>
+    </div>
+  </section>
+
+  <section id="proyectos">
+    <div class="section-title">Proyectos</div>
+    <div class="projects-list">
+      <div class="project-item">
+        <span class="project-name">Nombre del proyecto</span>
+        <span class="project-year">2026</span>
+      </div>
+      <div class="project-item">
+        <span class="project-name">Nombre del proyecto</span>
+        <span class="project-year">2025</span>
+      </div>
+      <div class="project-item">
+        <span class="project-name">Nombre del proyecto</span>
+        <span class="project-year">2024</span>
+      </div>
+    </div>
+  </section>
+
+  <section id="contacto">
+    <div class="section-title">Contacto</div>
+    <div class="contact-content">
+      <a href="mailto:correo@ejemplo.com">correo@ejemplo.com</a>
+      <a href="https://www.instagram.com/" target="_blank" rel="noopener">Instagram</a>
+    </div>
+  </section>
+
+  <footer>
+    <span>Coqo De Serena</span>
+    <span>&copy; 2026</span>
+  </footer>
+
+  <script>
+    // Smooth scroll
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', e => {
+        e.preventDefault();
+        const target = document.querySelector(a.getAttribute('href'));
+        if (target) target.scrollIntoView({ behavior: 'smooth' });
+      });
+    });
+  </script>
+
+</body>
+</html>

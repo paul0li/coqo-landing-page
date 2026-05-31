@@ -1,18 +1,18 @@
 # Coqo De Serena
 
-Landing page minimalista para la artista Coqo De Serena.
+Minimalist landing page for the artist Coqo De Serena.
 
-## Estructura
+## Structure
 
-- **Hero** — Nombre + video embebido (Vimeo)
-- **Bio** — Breve descripción de la artista
-- **Proyectos** — Secciones desplegables con foto y descripción
-- **Contacto** — Email e Instagram
+- **Hero** — Name + embedded video (Vimeo)
+- **Bio** — Brief description of the artist
+- **Projects** — Expandable sections with photo and description
+- **Contact** — Email and Instagram
 
 ## Stack
 
-HTML + CSS + JS vanilla. Un solo archivo, cero dependencias.
+HTML + CSS + vanilla JS. Single file, zero dependencies.
 
-## Uso
+## Usage
 
-Abrir `index.html` en el navegador. Para personalizar contenido, editar directamente el HTML.
+Open `index.html` in a browser. To customize content, edit the HTML directly.

@@ -48,6 +48,15 @@
       list-style: none;
       align-items: center;
     }
+    .nav-toggle {
+      display: none;
+      background: none;
+      border: none;
+      color: #e8e8e8;
+      font-size: 1.4rem;
+      cursor: pointer;
+      padding: 0;
+    }
     nav .nav-links a {
       font-size: 0.8rem;
       font-weight: 300;
@@ -384,8 +393,22 @@
     /* MOBILE */
     @media (max-width: 600px) {
       nav { padding: 1rem 1.5rem; }
-      nav .nav-links { gap: 1rem; }
-      nav .nav-links a { font-size: 0.65rem; }
+      nav .nav-links {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        flex-direction: column;
+        background: rgba(10, 10, 10, 0.95);
+        backdrop-filter: blur(8px);
+        padding: 1rem 1.5rem;
+        gap: 1rem;
+        align-items: flex-start;
+      }
+      nav .nav-links.open { display: flex; }
+      .nav-toggle { display: block; }
+      nav .nav-links a { font-size: 0.75rem; }
       .lang-btn { font-size: 0.6rem; padding: 0.2rem 0.5rem; }
       section { padding: 4rem 1.5rem; }
       .project-body-inner { flex-direction: column; }
@@ -399,7 +422,8 @@
 
   <nav>
     <a href="#" class="logo">María Catalina Jorquera</a>
-    <ul class="nav-links">
+    <button class="nav-toggle" id="navToggle" aria-label="Menu">☰</button>
+    <ul class="nav-links" id="navLinks">
       <li><a href="#bio" data-i18n="nav-bio">Bio</a></li>
       <li><a href="#projects" data-i18n="nav-projects">Projects</a></li>
       <li><a href="#agenda" data-i18n="nav-agenda">Agenda</a></li>
@@ -775,7 +799,12 @@
         e.preventDefault();
         const target = document.querySelector(a.getAttribute('href'));
         if (target) target.scrollIntoView({ behavior: 'smooth' });
+        document.getElementById('navLinks').classList.remove('open');
       });
+    });
+
+    document.getElementById('navToggle').addEventListener('click', () => {
+      document.getElementById('navLinks').classList.toggle('open');
     });
 
     /* ===== BIO — waveform "score" ===== */

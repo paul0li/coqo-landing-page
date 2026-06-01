@@ -1,12 +1,14 @@
-# Coqo De Serena
+# María Catalina Jorquera
 
-Minimalist landing page for the artist Coqo De Serena.
+Minimalist landing page for the artist María Catalina Jorquera.
 
 ## Structure
 
 - **Hero** — Name + embedded video (Vimeo)
-- **Bio** — Brief description of the artist
-- **Projects** — Expandable sections with photo and description
+- **Bio** — Full biography
+- **Projects** — 7 expandable projects with photo and description
+- **Agenda** — Upcoming events (2026)
+- **Workshops** — Workshop descriptions
 - **Contact** — Email and Instagram
 
 ## Stack

@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Coqo De Serena</title>
-  <meta name="description" content="Coqo De Serena — Artista">
+  <title>María Catalina Jorquera</title>
+  <meta name="description" content="María Catalina Jorquera — Director · Performer · Music Composer">
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -44,8 +44,9 @@
     }
     nav .nav-links {
       display: flex;
-      gap: 2rem;
+      gap: 1.5rem;
       list-style: none;
+      align-items: center;
     }
     nav .nav-links a {
       font-size: 0.8rem;
@@ -53,6 +54,19 @@
       letter-spacing: 0.15em;
       text-transform: uppercase;
     }
+    .lang-btn {
+      background: none;
+      border: 1px solid rgba(255,255,255,0.2);
+      color: #e8e8e8;
+      font-size: 0.7rem;
+      font-weight: 400;
+      letter-spacing: 0.1em;
+      padding: 0.25rem 0.6rem;
+      cursor: pointer;
+      text-transform: uppercase;
+      transition: opacity 0.3s, border-color 0.3s;
+    }
+    .lang-btn:hover { opacity: 0.6; border-color: rgba(255,255,255,0.4); }
 
     /* HERO */
     .hero {
@@ -65,7 +79,7 @@
       padding: 6rem 2rem 4rem;
     }
     .hero h1 {
-      font-size: clamp(3rem, 10vw, 8rem);
+      font-size: clamp(2rem, 8vw, 6rem);
       font-weight: 200;
       letter-spacing: 0.15em;
       text-transform: uppercase;
@@ -115,6 +129,7 @@
       line-height: 1.8;
       max-width: 650px;
     }
+    .bio p + p { margin-top: 1.5rem; }
 
     /* PROJECTS */
     .projects-list {
@@ -164,7 +179,7 @@
       transition: max-height 0.5s ease, padding 0.5s ease;
     }
     .project-item.open .project-body {
-      max-height: 600px;
+      max-height: 5000px;
       padding-bottom: 2rem;
     }
     .project-body-inner {
@@ -201,6 +216,67 @@
       line-height: 1.7;
       opacity: 0.7;
     }
+    .project-info p + p {
+      margin-top: 1rem;
+    }
+
+    /* AGENDA */
+    .agenda-item {
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      padding: 1.25rem 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 1rem;
+    }
+    .agenda-date {
+      min-width: 100px;
+      font-size: 0.8rem;
+      font-weight: 400;
+      letter-spacing: 0.1em;
+      opacity: 0.5;
+    }
+    .agenda-info {
+      text-align: right;
+    }
+    .agenda-info .agenda-title {
+      font-size: 1rem;
+      font-weight: 400;
+    }
+    .agenda-info .agenda-location {
+      font-size: 0.8rem;
+      font-weight: 300;
+      opacity: 0.5;
+      margin-top: 0.15rem;
+    }
+
+    /* WORKSHOPS */
+    .workshop-item {
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      padding: 1.5rem 0;
+    }
+    .workshop-item:last-child {
+      border-bottom: none;
+    }
+    .workshop-title {
+      font-size: 1.2rem;
+      font-weight: 300;
+      letter-spacing: 0.05em;
+    }
+    .workshop-years {
+      font-size: 0.8rem;
+      font-weight: 300;
+      opacity: 0.4;
+      margin-top: 0.2rem;
+    }
+    .workshop-description {
+      font-size: 0.95rem;
+      font-weight: 300;
+      line-height: 1.7;
+      opacity: 0.7;
+      margin-top: 1rem;
+      max-width: 650px;
+    }
 
     /* CONTACT */
     .contact-content {
@@ -232,8 +308,9 @@
     /* MOBILE */
     @media (max-width: 600px) {
       nav { padding: 1rem 1.5rem; }
-      nav .nav-links { gap: 1.2rem; }
-      nav .nav-links a { font-size: 0.7rem; }
+      nav .nav-links { gap: 1rem; }
+      nav .nav-links a { font-size: 0.65rem; }
+      .lang-btn { font-size: 0.6rem; padding: 0.2rem 0.5rem; }
       section { padding: 4rem 1.5rem; }
       .project-body-inner { flex-direction: column; }
       .project-image { width: 100%; min-width: unset; }
@@ -244,52 +321,57 @@
 <body>
 
   <nav>
-    <a href="#" class="logo">Coqo De Serena</a>
+    <a href="#" class="logo">María Catalina Jorquera</a>
     <ul class="nav-links">
-      <li><a href="#bio">Bio</a></li>
-      <li><a href="#projects">Projects</a></li>
-      <li><a href="#contact">Contact</a></li>
+      <li><a href="#bio" data-i18n="nav-bio">Bio</a></li>
+      <li><a href="#projects" data-i18n="nav-projects">Projects</a></li>
+      <li><a href="#agenda" data-i18n="nav-agenda">Agenda</a></li>
+      <li><a href="#workshops" data-i18n="nav-workshops">Workshops</a></li>
+      <li><a href="#contact" data-i18n="nav-contact">Contact</a></li>
+      <li><button class="lang-btn" id="langToggle" onclick="toggleLang()">ES</button></li>
     </ul>
   </nav>
 
   <div class="hero">
-    <h1>Coqo De Serena</h1>
-    <p>Artista</p>
+    <h1>María Catalina Jorquera</h1>
+    <p data-i18n="hero-subtitle">Director · Performer · Music Composer</p>
     <div class="hero-video">
       <iframe src="https://player.vimeo.com/video/465818484?background=1&autoplay=1&loop=1&muted=1&quality=720p" allow="autoplay; fullscreen" allowfullscreen></iframe>
     </div>
   </div>
 
   <section id="bio">
-    <div class="section-title">Bio</div>
+    <div class="section-title" data-i18n="section-bio">Bio</div>
     <div class="bio">
-      <p>
-        Biography text here. Brief description about Coqo De Serena,
-        her trajectory, style and artistic vision.
-      </p>
+      <p data-i18n-html="bio-p1">María Catalina Jorquera is a Chilean artist working at the intersection of theatre, performance, sound composition, and body practice. Her work proposes immersive, political, and emotionally situated experiences that investigate the relationships between body, technology, public space, and collective memory. Her formation includes residencies at Odin Teatret / Nordisk Teaterlaboratorium in Denmark, working with Eugenio Barba, Roberta Carreri, and Carolina Pizarro, and participation in the International School of Theatre Anthropology (ISTA) in Italy.</p>
+      <p data-i18n-html="bio-p2">Since 2019, she directs Proyecto Nuclio alongside choreographer and dancer Mario Carreño, developing transdisciplinary works and performative actions presented in Chile and internationally. Her practice spans urban interventions, participatory audio-performances, videodance, interactive sound installations, and community-based residencies. Among her works: K-minata (2021, Bienal de Artes Mediales, MAC Santiago), Fiestología (2024, Centex Valparaíso, funded by the Ministry of Cultures of Chile), Mosquerío (2020, videodanza in circulation at Frame Rush Video Dance Festival, London; Postporn Film Festival, Warsaw; and Marché de l'Illustration Impertinente, Paris), and the co-direction of the choreography of Niñx, a music video by Ana Tijoux.</p>
+      <p data-i18n-html="bio-p3">As a playwright and performer, she wrote and performed Urano (2019/2022), selected for the International Playwriting Festival La Rebelión de las Voces (Santiago Off) and premiered at Teatro Sidarte, Santiago. In 2026, she presented at the symposium Redes as Resistance, organized by La Escuela in collaboration with MoMA PS1 (New York), Museo Universitario del Chopo (Mexico), and La Nueva Fábrica (Guatemala).</p>
+      <p data-i18n-html="bio-p4">Her current project, Chucao: Sensitive Interface Biome, was selected for an international residency at IRA Festival (Soverato, Italy, 2026) through the EXPORT program of Fundación Santiago OFF, and continues her research into the relationships between movement, sound ecology, technology, and the non-human. She also leads Sicalípticas, an experimental cabaret collective that reclaims the archive of popular femininity through performance, fonomimicry, and music.</p>
     </div>
   </section>
 
   <section id="projects">
-    <div class="section-title">Projects</div>
+    <div class="section-title" data-i18n="section-projects">Projects</div>
     <div class="projects-list">
 
       <div class="project-item">
         <div class="project-header" onclick="this.parentElement.classList.toggle('open')">
           <div class="project-header-left">
-            <span class="project-name">Project name</span>
-            <span class="project-year">2026</span>
+            <span class="project-name" data-i18n="proj-1-name">Chucao: Sensitive Interface Biome</span>
+            <span class="project-year">2025 –</span>
           </div>
           <span class="project-toggle">+</span>
         </div>
         <div class="project-body">
           <div class="project-body-inner">
             <div class="project-image">
-              <!-- Replace with: <img src="photo.jpg" alt="Project name"> -->
               <span class="placeholder">Photo</span>
             </div>
-            <div class="project-info">
-              <p>Project description. Details about the work, context, collaborators and any relevant information.</p>
+            <div class="project-info" data-i18n-html="proj-1-body">
+              <p><strong>Type:</strong> Live arts performance</p>
+              <p><strong>Direction:</strong> María Catalina Jorquera<br><strong>Choreographic design:</strong> Mario Carreño<br><strong>Production:</strong> Proyecto Nuclio</p>
+              <p>Chucao: Sensitive Interface Biome is a live arts performance that proposes a relational ecosystem in real-time. Two performers — an actress/musician digital systems operator and a dancer specialized in popular dances — inhabit a sonic environment governed by a harmonic scale derived from the spectral analysis of the song of the Chucao (Scelorchilus rubecula), a bird endemic to the austral forests of Chile. The piece operates as a triadic system where the human (performers), the computational (digital audio software, generative music with AI), and the non-human (the memory of the bird's song) coexist.</p>
+              <p>We understand this 'Biome' not only as an ecological category, but as a structure of interdependencies where the technological, the human, and the memory of the bird coexist and mutually transform each other, just as occurs in the ecosystems of Chilean Patagonia. The relationship between body and technology is structured as a feedback loop: the body activates the system through controllers, the generative system responds with sonic material, and that sonic material generates a new bodily reaction that again influences the system. It is a system of agencies in a loop where the dancer is the prime mover of the ecosystem and the music is the consequence of their physical decisions in space.</p>
             </div>
           </div>
         </div>
@@ -298,19 +380,20 @@
       <div class="project-item">
         <div class="project-header" onclick="this.parentElement.classList.toggle('open')">
           <div class="project-header-left">
-            <span class="project-name">Project name</span>
-            <span class="project-year">2025</span>
+            <span class="project-name" data-i18n="proj-2-name">Sicalípticas</span>
+            <span class="project-year">2026 –</span>
           </div>
           <span class="project-toggle">+</span>
         </div>
         <div class="project-body">
           <div class="project-body-inner">
             <div class="project-image">
-              <!-- Replace with: <img src="photo.jpg" alt="Project name"> -->
               <span class="placeholder">Photo</span>
             </div>
-            <div class="project-info">
-              <p>Project description. Details about the work, context, collaborators and any relevant information.</p>
+            <div class="project-info" data-i18n-html="proj-2-body">
+              <p><strong>Type:</strong> Experimental cabaret collective</p>
+              <p><strong>Direction:</strong> María Catalina Jorquera<br><strong>Production:</strong> Proyecto Nuclio</p>
+              <p>Sicalípticas is an experimental cabaret collective that reclaims the archive of popular femininity through performance, fonomimicry, and music. Vedettes, chorus girls, and revue artists who sang, danced, performed, and seduced from the stage — women who shone until time condemned them to oblivion when their bodies ceased to serve the male gaze. Sicalípticas invokes these figures of low culture and brings them into the present with irony and irreverence. Through fonomimicry, iconic songs, acting, singing, original music, and classic scenes from film and television, this trio constructs a living archive of spectacularized femininity: its power, its discard, its revenge.</p>
             </div>
           </div>
         </div>
@@ -319,7 +402,7 @@
       <div class="project-item">
         <div class="project-header" onclick="this.parentElement.classList.toggle('open')">
           <div class="project-header-left">
-            <span class="project-name">Project name</span>
+            <span class="project-name" data-i18n="proj-3-name">Fiestología</span>
             <span class="project-year">2024</span>
           </div>
           <span class="project-toggle">+</span>
@@ -327,11 +410,95 @@
         <div class="project-body">
           <div class="project-body-inner">
             <div class="project-image">
-              <!-- Replace with: <img src="photo.jpg" alt="Project name"> -->
               <span class="placeholder">Photo</span>
             </div>
-            <div class="project-info">
-              <p>Project description. Details about the work, context, collaborators and any relevant information.</p>
+            <div class="project-info" data-i18n-html="proj-3-body">
+              <p><strong>Type:</strong> Audio performance<br><strong>Duration:</strong> 60 min<br><strong>Format:</strong> Binaural sound + mobile audio devices<br><strong>Location:</strong> Valparaíso, Chile<br><strong>Direction and Music Production:</strong> María Catalina Jorquera<br><strong>Choreography and DJ Set:</strong> Mario Carreño<br><strong>Production:</strong> Proyecto Nuclio and Centex</p>
+              <p>Fiestología is a participatory audio performance designed as an immersive journey through public space. Guided by headphones, participants follow a sound score composed by the artist. The piece blends soundscapes, original music, elements of generative music, and poetic and choreographic prompts that spark a collective celebration in the city. The work highlights urban social dance — cumbia, salsa, house — as a form of memory and emotional resistance. Funded by the Extension Center of the Ministry of Cultures of Chile (Centex), Fiestología presents sound as a meeting technology and as a way of choreographed perception.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="project-item">
+        <div class="project-header" onclick="this.parentElement.classList.toggle('open')">
+          <div class="project-header-left">
+            <span class="project-name" data-i18n="proj-4-name">May Nightfall / El Anochecer de Mayo</span>
+            <span class="project-year">2024</span>
+          </div>
+          <span class="project-toggle">+</span>
+        </div>
+        <div class="project-body">
+          <div class="project-body-inner">
+            <div class="project-image">
+              <span class="placeholder">Photo</span>
+            </div>
+            <div class="project-info" data-i18n-html="proj-4-body">
+              <p><strong>Type:</strong> Artistic residency and public intervention<br><strong>Duration:</strong> 2 weeks (residency) + performative event<br><strong>Format:</strong> Community workshops, procession, ritual performance<br><strong>Location:</strong> Panimávida, Maule Region, Chile<br><strong>Direction:</strong> María Catalina Jorquera<br><strong>Choreographic design:</strong> Mario Carreño<br><strong>Production:</strong> Proyecto Nuclio and Fundación Buenas Raíces</p>
+              <p>May Nightfall is a creative residency and community art intervention developed in Panimávida, a small town in Chile's Maule Region, centered on the traditional celebration of the Burning of the May Cross. Funded by the Ministry of Cultures, Arts and Heritage (PAOCC), the residency brought local residents together as dancers and performers in a procession that culminated in the ceremonial burning ritual. The project connected with the community through movement workshops and choreographic preparation, collaborating with local artistic groups such as the Tierra de Pumas drum ensemble and the organization CreemosPani. A documentary record of the creative process was produced and shared on digital platforms, showing the intersection between performance, popular festivity, and territorial ritual in rural Chile.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="project-item">
+        <div class="project-header" onclick="this.parentElement.classList.toggle('open')">
+          <div class="project-header-left">
+            <span class="project-name" data-i18n="proj-5-name">K-minata</span>
+            <span class="project-year">2021 / 2024</span>
+          </div>
+          <span class="project-toggle">+</span>
+        </div>
+        <div class="project-body">
+          <div class="project-body-inner">
+            <div class="project-image">
+              <span class="placeholder">Photo</span>
+            </div>
+            <div class="project-info" data-i18n-html="proj-5-body">
+              <p><strong>Type:</strong> Audio-guided urban walk<br><strong>Duration:</strong> 45 min<br><strong>Format:</strong> Portable sound system, audio track, and DJ set<br><strong>Location:</strong> Santiago, Chile<br><strong>Direction:</strong> María Catalina Jorquera<br><strong>Choreographic Design:</strong> Mario Carreño<br><strong>DJ Set:</strong> LoveShai<br><strong>Production:</strong> Proyecto Nuclio</p>
+              <p>K-minata is a collective performance in which bodies move through the urban architecture of Santiago following a choreographed route, accompanied by live narration and a DJ set that constructs a soundscape in motion. Created for the Bienal de Artes Mediales de Santiago, the piece was conceived as an immersive and accessible experience, including live audio description for people with low vision. The work explores how the body generates knowledge about territory through movement and listening. In 2024, a new version was developed in the Recoleta neighborhood in collaboration with local residents.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="project-item">
+        <div class="project-header" onclick="this.parentElement.classList.toggle('open')">
+          <div class="project-header-left">
+            <span class="project-name" data-i18n="proj-6-name">Mosquerío</span>
+            <span class="project-year">2020</span>
+          </div>
+          <span class="project-toggle">+</span>
+        </div>
+        <div class="project-body">
+          <div class="project-body-inner">
+            <div class="project-image">
+              <span class="placeholder">Photo</span>
+            </div>
+            <div class="project-info" data-i18n-html="proj-6-body">
+              <p><strong>Type:</strong> Short film / videodance<br><strong>Duration:</strong> 10 min<br><strong>Format:</strong> Digital video, HD<br><strong>Location:</strong> Santiago, Chile<br><strong>Direction:</strong> María Catalina Jorquera and Fernanda Gallardo<br><strong>Choreographic Design:</strong> Mario Carreño<br><strong>Original Music:</strong> Daniel Klauser<br><strong>Co-production:</strong> Arboleda and Proyecto Nuclio</p>
+              <p>Mosquerío is a performative short film in which bodies become a swarm that inhabits the ruins of an abandoned coal plant on the outskirts of Santiago. Created during the social uprising in Chile, the piece explores how bodies gather, move, and transform within a decaying industrial structure, treating the site as both landscape and collaborator. The work was developed through collective improvisation and audiovisual recording with cameras and drones, producing a physical, erotic, and dystopian composition. The piece has been presented at Frame Rush Video Dance Festival (London, 2021), Postporn Film Festival (Warsaw, 2022), and La Ventana Interdisciplinary Short Film Festival (Chile, 2021).</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="project-item">
+        <div class="project-header" onclick="this.parentElement.classList.toggle('open')">
+          <div class="project-header-left">
+            <span class="project-name" data-i18n="proj-7-name">Urano</span>
+            <span class="project-year">2019 / 2022</span>
+          </div>
+          <span class="project-toggle">+</span>
+        </div>
+        <div class="project-body">
+          <div class="project-body-inner">
+            <div class="project-image">
+              <span class="placeholder">Photo</span>
+            </div>
+            <div class="project-info" data-i18n-html="proj-7-body">
+              <p><strong>Type:</strong> Play<br><strong>Duration:</strong> 60 min<br><strong>Location:</strong> Teatro Sidarte, Santiago, Chile<br><strong>Direction:</strong> Daniela López<br><strong>Playwright:</strong> María Catalina Jorquera<br><strong>Music:</strong> Francisca Maturana and María Catalina Jorquera<br><strong>Cast:</strong> Eduardo Vásquez, Carolina Munitiz, Tomás Riveros, María Catalina Jorquera<br><strong>Production:</strong> Cía La Extranjera</p>
+              <p>Urano is a play written by the artist, who was also part of the cast and composed segments of the original music. Selected for the International Playwriting Festival La Rebelión de las Voces (Santiago Off) and premiered at Teatro Sidarte, Santiago. Framed within speculative fiction, Urano proposes a journey from Earth to the planet Uranus as an act of rejecting normative terrestrial gender systems. With a fragmented structure, a science-fiction atmosphere, and a hybrid language blending manifesto, poetry, and narration, the play reflects on identity, gender, dissociation, and the desire for transformation. The staging incorporated live construction of antennas, electronic devices, vocal distortion, and a spatialized soundscape manipulated in real time by actors and sound technicians.</p>
             </div>
           </div>
         </div>
@@ -340,21 +507,182 @@
     </div>
   </section>
 
+  <section id="agenda">
+    <div class="section-title" data-i18n="section-agenda">Agenda</div>
+    <div class="agenda-list">
+      <div class="agenda-item">
+        <div class="agenda-date">FEB 8</div>
+        <div class="agenda-info">
+          <div class="agenda-title" data-i18n="agenda-1-title">Sicalípticas</div>
+          <div class="agenda-location" data-i18n="agenda-1-loc">Santiago, Chile — Teatro Fábrica</div>
+        </div>
+      </div>
+      <div class="agenda-item">
+        <div class="agenda-date">FEB 15</div>
+        <div class="agenda-info">
+          <div class="agenda-title" data-i18n="agenda-2-title">Redes as Resistance — Symposium (online)</div>
+          <div class="agenda-location" data-i18n="agenda-2-loc">La Escuela / MoMA PS1 / Museo Universitario del Chopo / La Nueva Fábrica</div>
+        </div>
+      </div>
+      <div class="agenda-item">
+        <div class="agenda-date">MAR 8</div>
+        <div class="agenda-info">
+          <div class="agenda-title" data-i18n="agenda-3-title">Sicalípticas</div>
+          <div class="agenda-location" data-i18n="agenda-3-loc">Santiago, Chile — Teatro Fábrica</div>
+        </div>
+      </div>
+      <div class="agenda-item">
+        <div class="agenda-date">JUN 12 – 22</div>
+        <div class="agenda-info">
+          <div class="agenda-title" data-i18n="agenda-4-title">Chucao: Sensitive Interface Biome</div>
+          <div class="agenda-location" data-i18n="agenda-4-loc">Soverato, Italy — IRA Festival (residency)</div>
+        </div>
+      </div>
+      <div class="agenda-item">
+        <div class="agenda-date">JUL 15</div>
+        <div class="agenda-info">
+          <div class="agenda-title" data-i18n="agenda-5-title">Sicalípticas</div>
+          <div class="agenda-location" data-i18n="agenda-5-loc">Santiago, Chile — La Peluquería Francesa</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="workshops">
+    <div class="section-title" data-i18n="section-workshops">Workshops</div>
+    <div class="workshops-list">
+      <div class="workshop-item">
+        <div class="workshop-header">
+          <span class="workshop-title" data-i18n="workshop-1-title">Pelvic Movement</span>
+          <div class="workshop-years">2019 – present</div>
+        </div>
+        <div class="workshop-description" data-i18n-html="workshop-1-body">
+          <p>Pelvic Movement is a dance and movement workshop that proposes the pelvis as a starting point for exploring the body, rhythm, and collective expression. Through a methodology that combines tools from urban dance and theatricality, it invites people with no prior experience to discover their own movement — from playful dynamics to group improvisation. The process can culminate in an intervention in public space, turning the neighborhood into a stage for carnival and community celebration.</p>
+        </div>
+      </div>
+
+      <div class="workshop-item">
+        <div class="workshop-header">
+          <span class="workshop-title" data-i18n="workshop-2-title">For the Love of Dance</span>
+          <div class="workshop-years">2023 – 2024</div>
+        </div>
+        <div class="workshop-description" data-i18n-html="workshop-2-body">
+          <p>For the Love of Dance is a workshop that understands the party as a ritual of communal encounter. Through dynamics combining dance, movement, and theatricality, participants explore different styles and rhythms in a celebratory and inclusive environment — no prior experience needed. Unlike Pelvic Movement, this workshop approaches the body in motion more broadly, without a specific focus on one body zone, inviting each person to find their own way of dancing. The process can culminate in a collective intervention in the neighborhood's public space.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <section id="contact">
-    <div class="section-title">Contact</div>
+    <div class="section-title" data-i18n="section-contact">Contact</div>
     <div class="contact-content">
-      <a href="mailto:email@example.com">email@example.com</a>
-      <a href="https://www.instagram.com/" target="_blank" rel="noopener">Instagram</a>
+      <a href="mailto:mariacatalina.jb@gmail.com">mariacatalina.jb@gmail.com</a>
+      <a href="https://www.instagram.com/" target="_blank" rel="noopener" data-i18n="contact-instagram">Instagram</a>
     </div>
   </section>
 
   <footer>
-    <span>Coqo De Serena</span>
+    <span>María Catalina Jorquera</span>
     <span>&copy; 2026</span>
   </footer>
 
   <script>
-    // Smooth scroll
+    const lang = {
+      current: 'en',
+      t: {
+        'nav-bio':           { en: 'Bio',            es: 'Bio' },
+        'nav-projects':      { en: 'Projects',       es: 'Proyectos' },
+        'nav-agenda':        { en: 'Agenda',         es: 'Agenda' },
+        'nav-workshops':     { en: 'Workshops',      es: 'Talleres' },
+        'nav-contact':       { en: 'Contact',        es: 'Contacto' },
+        'hero-subtitle':     { en: 'Director \u00b7 Performer \u00b7 Music Composer', es: 'Directora \u00b7 Performer \u00b7 Compositora Musical' },
+        'section-bio':       { en: 'Bio',            es: 'Bio' },
+        'section-projects':  { en: 'Projects',       es: 'Proyectos' },
+        'section-agenda':    { en: 'Agenda',         es: 'Agenda' },
+        'section-workshops': { en: 'Workshops',      es: 'Talleres' },
+        'section-contact':   { en: 'Contact',        es: 'Contacto' },
+        'contact-instagram': { en: 'Instagram',      es: 'Instagram' },
+
+        'bio-p1': { en: 'Mar\u00eda Catalina Jorquera is a Chilean artist working at the intersection of theatre, performance, sound composition, and body practice. Her work proposes immersive, political, and emotionally situated experiences that investigate the relationships between body, technology, public space, and collective memory. Her formation includes residencies at Odin Teatret / Nordisk Teaterlaboratorium in Denmark, working with Eugenio Barba, Roberta Carreri, and Carolina Pizarro, and participation in the International School of Theatre Anthropology (ISTA) in Italy.',
+                     es: 'Mar\u00eda Catalina Jorquera es una artista chilena que trabaja en la intersecci\u00f3n entre teatro, performance, composici\u00f3n sonora y pr\u00e1ctica corporal. Su obra propone experiencias inmersivas, pol\u00edticas y emocionalmente situadas que investigan las relaciones entre cuerpo, tecnolog\u00eda, espacio p\u00fablico y memoria colectiva. Su formaci\u00f3n incluye residencias en Odin Teatret / Nordisk Teaterlaboratorium en Dinamarca, trabajando con Eugenio Barba, Roberta Carreri y Carolina Pizarro, y participaci\u00f3n en la Escuela Internacional de Antropolog\u00eda Teatral (ISTA) en Italia.' },
+        'bio-p2': { en: 'Since 2019, she directs Proyecto Nuclio alongside choreographer and dancer Mario Carre\u00f1o, developing transdisciplinary works and performative actions presented in Chile and internationally. Her practice spans urban interventions, participatory audio-performances, videodance, interactive sound installations, and community-based residencies. Among her works: K-minata (2021, Bienal de Artes Mediales, MAC Santiago), Fiestolog\u00eda (2024, Centex Valpara\u00edso, funded by the Ministry of Cultures of Chile), Mosquer\u00edo (2020, videodanza in circulation at Frame Rush Video Dance Festival, London; Postporn Film Festival, Warsaw; and March\u00e9 de l\u2019Illustration Impertinente, Paris), and the co-direction of the choreography of Ni\u00f1x, a music video by Ana Tijoux.',
+                     es: 'Desde 2019 dirige Proyecto Nuclio junto al bailar\u00edn y core\u00f3grafo Mario Carre\u00f1o, desarrollando obras y acciones performativas presentadas en Chile e internacionalmente. Su pr\u00e1ctica abarca intervenciones urbanas, audio-performances participativas, videodanza, instalaciones sonoras interactivas y residencias comunitarias. Entre sus obras: K-minata (2021, Bienal de Artes Mediales, MAC Santiago), Fiestolog\u00eda (2024, Centex Valpara\u00edso, financiada por el Ministerio de las Culturas, las Artes y el Patrimonio), Mosquer\u00edo (2020, videodanza en circulaci\u00f3n en Frame Rush Video Dance Festival, Londres; Festival de Postporno, Varsovia; y March\u00e9 de l\u2019Illustration Impertinente, Par\u00eds), y la codirecci\u00f3n coreogr\u00e1fica de Ni\u00f1x, videoclip de Ana Tijoux.' },
+        'bio-p3': { en: 'As a playwright and performer, she wrote and performed Urano (2019/2022), selected for the International Playwriting Festival La Rebeli\u00f3n de las Voces (Santiago Off) and premiered at Teatro Sidarte, Santiago. In 2026, she presented at the symposium Redes as Resistance, organized by La Escuela in collaboration with MoMA PS1 (New York), Museo Universitario del Chopo (Mexico), and La Nueva F\u00e1brica (Guatemala).',
+                     es: 'Como dramaturga e int\u00e9rprete, escribi\u00f3 y actu\u00f3 en Urano (2019/2022), seleccionada para el Festival Internacional de Dramaturgia La Rebeli\u00f3n de las Voces (Santiago Off) y estrenada en Teatro Sidarte, Santiago. En 2026 particip\u00f3 como ponente en el simposio Redes como Resistencia, organizado por La Escuela en colaboraci\u00f3n con MoMA PS1 (Nueva York), Museo Universitario del Chopo (M\u00e9xico) y La Nueva F\u00e1brica (Guatemala).' },
+        'bio-p4': { en: 'Her current project, Chucao: Sensitive Interface Biome, was selected for an international residency at IRA Festival (Soverato, Italy, 2026) through the EXPORT program of Fundaci\u00f3n Santiago OFF, and continues her research into the relationships between movement, sound ecology, technology, and the non-human. She also leads Sical\u00edpticas, an experimental cabaret collective that reclaims the archive of popular femininity through performance, fonomimicry, and music.',
+                     es: 'Su proyecto actual, Chucao: Bioma de Interfaz Sensible, fue seleccionado para una residencia internacional en IRA Festival (Soverato, Italia, 2026) a trav\u00e9s del programa EXPORT de Fundaci\u00f3n Santiago OFF, y contin\u00faa su investigaci\u00f3n sobre las relaciones entre movimiento, ecolog\u00eda sonora, tecnolog\u00eda y lo no-humano. Dirige adem\u00e1s Sical\u00edpticas, un colectivo de cabaret experimental que recupera el archivo de la feminidad popular a trav\u00e9s de la performance, la fonom\u00edmica y la m\u00fasica.' },
+
+        'proj-1-name': { en: 'Chucao: Sensitive Interface Biome', es: 'Chucao: Bioma de Interfaz Sensible' },
+        'proj-1-body': { en: '<p><strong>Type:</strong> Live arts performance</p><p><strong>Direction:</strong> Mar\u00eda Catalina Jorquera<br><strong>Choreographic design:</strong> Mario Carre\u00f1o<br><strong>Production:</strong> Proyecto Nuclio</p><p>Chucao: Sensitive Interface Biome is a live arts performance that proposes a relational ecosystem in real-time. Two performers \u2014 an actress/musician digital systems operator and a dancer specialized in popular dances \u2014 inhabit a sonic environment governed by a harmonic scale derived from the spectral analysis of the song of the Chucao (Scelorchilus rubecula), a bird endemic to the austral forests of Chile. The piece operates as a triadic system where the human (performers), the computational (digital audio software, generative music with AI), and the non-human (the memory of the bird\u2019s song) coexist.</p><p>We understand this \u2018Biome\u2019 not only as an ecological category, but as a structure of interdependencies where the technological, the human, and the memory of the bird coexist and mutually transform each other, just as occurs in the ecosystems of Chilean Patagonia. The relationship between body and technology is structured as a feedback loop: the body activates the system through controllers, the generative system responds with sonic material, and that sonic material generates a new bodily reaction that again influences the system. It is a system of agencies in a loop where the dancer is the prime mover of the ecosystem and the music is the consequence of their physical decisions in space.</p>',
+                          es: '<p><strong>Tipo:</strong> Performance de artes vivas</p><p><strong>Direcci\u00f3n:</strong> Mar\u00eda Catalina Jorquera<br><strong>Dise\u00f1o coreogr\u00e1fico e investigaci\u00f3n corporal:</strong> Mario Carre\u00f1o<br><strong>Producci\u00f3n:</strong> Proyecto Nuclio</p><p>Chucao: Bioma de Interfaz Sensible es una performance de artes vivas que propone un ecosistema relacional en tiempo real. Dos int\u00e9rpretes \u2014 una actriz/m\u00fasico operadora de sistemas digitales y un bailar\u00edn especializado en danzas urbanas y populares \u2014 habitan un entorno sonoro gobernado por una escala arm\u00f3nica derivada del an\u00e1lisis espectral del canto del Chucao (Scelorchilus rubecula), un p\u00e1jaro end\u00e9mico de los bosques australes de Chile.</p><p>Entendemos este \u2018Bioma\u2019 no solo como una categor\u00eda ecol\u00f3gica, sino como una estructura de interdependencias donde lo tecnol\u00f3gico, lo humano y la memoria del p\u00e1jaro coexisten y se transforman mutuamente. La relaci\u00f3n entre cuerpo y tecnolog\u00eda se estructura como un bucle de retroalimentaci\u00f3n: el cuerpo activa el sistema a trav\u00e9s de controladores, el sistema generativo responde con material sonoro, y ese material sonoro genera una nueva reacci\u00f3n corporal que vuelve a influir en el sistema.</p>' },
+
+        'proj-2-name': { en: 'Sical\u00edpticas', es: 'Sical\u00edpticas' },
+        'proj-2-body': { en: '<p><strong>Type:</strong> Experimental cabaret collective</p><p><strong>Direction:</strong> Mar\u00eda Catalina Jorquera<br><strong>Production:</strong> Proyecto Nuclio</p><p>Sical\u00edpticas is an experimental cabaret collective that reclaims the archive of popular femininity through performance, fonomimicry, and music. Vedettes, chorus girls, and revue artists who sang, danced, performed, and seduced from the stage \u2014 women who shone until time condemned them to oblivion when their bodies ceased to serve the male gaze. Sical\u00edpticas invokes these figures of low culture and brings them into the present with irony and irreverence. Through fonomimicry, iconic songs, acting, singing, original music, and classic scenes from film and television, this trio constructs a living archive of spectacularized femininity: its power, its discard, its revenge.</p>',
+                         es: '<p><strong>Tipo:</strong> Colectivo de cabaret experimental</p><p><strong>Direcci\u00f3n:</strong> Mar\u00eda Catalina Jorquera<br><strong>Producci\u00f3n:</strong> Proyecto Nuclio</p><p>Sical\u00edpticas es un cabaret bastardo que resucita a las divas olvidadas del espect\u00e1culo popular. Vedettes, coristas y artistas de revista que cantaban, bailaban, actuaban y seduc\u00edan desde el escenario. Mujeres que brillaron hasta que el paso del tiempo las conden\u00f3 al olvido cuando sus cuerpos dejaron de servir al placer de la mirada masculina. Sical\u00edpticas invoca a estas figuras del bajo cultural y las trae al presente con iron\u00eda y desenfado. A trav\u00e9s de fonom\u00edmica, canciones ic\u00f3nicas, actuaci\u00f3n, canto, m\u00fasica original y escenas cl\u00e1sicas del cine y la tv, este tr\u00edo construye un archivo vivo de la feminidad espectacularizada: su potencia, su desecho, su venganza.</p>' },
+
+        'proj-3-name': { en: 'Fiestolog\u00eda', es: 'Fiestolog\u00eda' },
+        'proj-3-body': { en: '<p><strong>Type:</strong> Audio performance<br><strong>Duration:</strong> 60 min<br><strong>Format:</strong> Binaural sound + mobile audio devices<br><strong>Location:</strong> Valpara\u00edso, Chile<br><strong>Direction and Music Production:</strong> Mar\u00eda Catalina Jorquera<br><strong>Choreography and DJ Set:</strong> Mario Carre\u00f1o<br><strong>Production:</strong> Proyecto Nuclio and Centex</p><p>Fiestolog\u00eda is a participatory audio performance designed as an immersive journey through public space. Guided by headphones, participants follow a sound score composed by the artist. The piece blends soundscapes, original music, elements of generative music, and poetic and choreographic prompts that spark a collective celebration in the city. The work highlights urban social dance \u2014 cumbia, salsa, house \u2014 as a form of memory and emotional resistance. Funded by the Extension Center of the Ministry of Cultures of Chile (Centex), Fiestolog\u00eda presents sound as a meeting technology and as a way of choreographed perception.</p>',
+                         es: '<p><strong>Tipo:</strong> Audio-performance<br><strong>Duraci\u00f3n:</strong> 60 min<br><strong>Formato:</strong> Sonido binaural + dispositivos de audio m\u00f3viles<br><strong>Lugar:</strong> Valpara\u00edso, Chile<br><strong>Direcci\u00f3n y producci\u00f3n musical:</strong> Mar\u00eda Catalina Jorquera<br><strong>Coreograf\u00eda y DJ Set:</strong> Mario Carre\u00f1o<br><strong>Producci\u00f3n:</strong> Proyecto Nuclio y Centex</p><p>Fiestolog\u00eda es una audio-performance participativa dise\u00f1ada como un viaje inmersivo por el espacio p\u00fablico. Guiados por auriculares, los participantes siguen una partitura sonora compuesta por la artista. La pieza combina paisajes sonoros, m\u00fasica original, elementos de m\u00fasica generativa y consignas po\u00e9ticas y coreogr\u00e1ficas que desencadenan una celebraci\u00f3n colectiva en la ciudad. La obra pone en valor la danza social urbana \u2014 cumbia, salsa, house \u2014 como forma de memoria y resistencia emocional. Financiada por el Centro de Extensi\u00f3n del Ministerio de las Culturas de Chile (Centex), Fiestolog\u00eda presenta el sonido como tecnolog\u00eda de encuentro y como modo de percepci\u00f3n coreografiada.</p>' },
+
+        'proj-4-name': { en: 'May Nightfall / El Anochecer de Mayo', es: 'El Anochecer de Mayo' },
+        'proj-4-body': { en: '<p><strong>Type:</strong> Artistic residency and public intervention<br><strong>Duration:</strong> 2 weeks (residency) + performative event<br><strong>Format:</strong> Community workshops, procession, ritual performance<br><strong>Location:</strong> Panim\u00e1vida, Maule Region, Chile<br><strong>Direction:</strong> Mar\u00eda Catalina Jorquera<br><strong>Choreographic design:</strong> Mario Carre\u00f1o<br><strong>Production:</strong> Proyecto Nuclio and Fundaci\u00f3n Buenas Ra\u00edces</p><p>May Nightfall is a creative residency and community art intervention developed in Panim\u00e1vida, a small town in Chile\u2019s Maule Region, centered on the traditional celebration of the Burning of the May Cross. Funded by the Ministry of Cultures, Arts and Heritage (PAOCC), the residency brought local residents together as dancers and performers in a procession that culminated in the ceremonial burning ritual. The project connected with the community through movement workshops and choreographic preparation, collaborating with local artistic groups such as the Tierra de Pumas drum ensemble and the organization CreemosPani. A documentary record of the creative process was produced and shared on digital platforms, showing the intersection between performance, popular festivity, and territorial ritual in rural Chile.</p>',
+                         es: '<p><strong>Tipo:</strong> Residencia art\u00edstica e intervenci\u00f3n p\u00fablica<br><strong>Duraci\u00f3n:</strong> 2 semanas (residencia) + evento performativo<br><strong>Formato:</strong> Talleres comunitarios, procesi\u00f3n, performance ritual<br><strong>Lugar:</strong> Panim\u00e1vida, Regi\u00f3n del Maule, Chile<br><strong>Direcci\u00f3n:</strong> Mar\u00eda Catalina Jorquera<br><strong>Dise\u00f1o coreogr\u00e1fico:</strong> Mario Carre\u00f1o<br><strong>Producci\u00f3n:</strong> Proyecto Nuclio y Fundaci\u00f3n Buenas Ra\u00edces</p><p>El Anochecer de Mayo es una residencia creativa e intervenci\u00f3n art\u00edstica comunitaria desarrollada en Panim\u00e1vida, una peque\u00f1a localidad de la Regi\u00f3n del Maule, centrada en la celebraci\u00f3n tradicional de la Quema de la Cruz de Mayo. Financiada por el Ministerio de las Culturas, las Artes y el Patrimonio (PAOCC), la residencia reuni\u00f3 a habitantes locales como bailarines e int\u00e9rpretes en una procesi\u00f3n que culmin\u00f3 en el ritual ceremonial de la quema. El proyecto conect\u00f3 con la comunidad a trav\u00e9s de talleres de movimiento y preparaci\u00f3n coreogr\u00e1fica, colaborando con agrupaciones locales como el conjunto de percusi\u00f3n Tierra de Pumas y la organizaci\u00f3n CreemosPani. Se produjo y difundi\u00f3 un registro documental del proceso creativo en plataformas digitales.</p>' },
+
+        'proj-5-name': { en: 'K-minata', es: 'K-minata' },
+        'proj-5-body': { en: '<p><strong>Type:</strong> Audio-guided urban walk<br><strong>Duration:</strong> 45 min<br><strong>Format:</strong> Portable sound system, audio track, and DJ set<br><strong>Location:</strong> Santiago, Chile<br><strong>Direction:</strong> Mar\u00eda Catalina Jorquera<br><strong>Choreographic Design:</strong> Mario Carre\u00f1o<br><strong>DJ Set:</strong> LoveShai<br><strong>Production:</strong> Proyecto Nuclio</p><p>K-minata is a collective performance in which bodies move through the urban architecture of Santiago following a choreographed route, accompanied by live narration and a DJ set that constructs a soundscape in motion. Created for the Bienal de Artes Mediales de Santiago, the piece was conceived as an immersive and accessible experience, including live audio description for people with low vision. The work explores how the body generates knowledge about territory through movement and listening. In 2024, a new version was developed in the Recoleta neighborhood in collaboration with local residents.</p>',
+                         es: '<p><strong>Tipo:</strong> Recorrido urbano audio-guiado<br><strong>Duraci\u00f3n:</strong> 45 min<br><strong>Formato:</strong> Sistema de sonido port\u00e1til, pista de audio y DJ set<br><strong>Lugar:</strong> Santiago, Chile<br><strong>Direcci\u00f3n:</strong> Mar\u00eda Catalina Jorquera<br><strong>Dise\u00f1o coreogr\u00e1fico:</strong> Mario Carre\u00f1o<br><strong>DJ Set:</strong> LoveShai<br><strong>Producci\u00f3n:</strong> Proyecto Nuclio</p><p>K-minata es una performance colectiva en la que los cuerpos se mueven por la arquitectura urbana de Santiago siguiendo un recorrido coreografiado, acompa\u00f1ado por una narraci\u00f3n en vivo y un DJ set que construye un paisaje sonoro en movimiento. Creada para la Bienal de Artes Mediales de Santiago, fue pensada como una experiencia inmersiva y accesible, que incluye audiodescripci\u00f3n en vivo para personas con baja visi\u00f3n. La obra explora c\u00f3mo el cuerpo genera conocimiento sobre el territorio a trav\u00e9s del movimiento y la escucha. En 2024 se desarroll\u00f3 una nueva versi\u00f3n en el barrio Recoleta en colaboraci\u00f3n con vecinos del barrio.</p>' },
+
+        'proj-6-name': { en: 'Mosquer\u00edo', es: 'Mosquer\u00edo' },
+        'proj-6-body': { en: '<p><strong>Type:</strong> Short film / videodance<br><strong>Duration:</strong> 10 min<br><strong>Format:</strong> Digital video, HD<br><strong>Location:</strong> Santiago, Chile<br><strong>Direction:</strong> Mar\u00eda Catalina Jorquera and Fernanda Gallardo<br><strong>Choreographic Design:</strong> Mario Carre\u00f1o<br><strong>Original Music:</strong> Daniel Klauser<br><strong>Co-production:</strong> Arboleda and Proyecto Nuclio</p><p>Mosquer\u00edo is a performative short film in which bodies become a swarm that inhabits the ruins of an abandoned coal plant on the outskirts of Santiago. Created during the social uprising in Chile, the piece explores how bodies gather, move, and transform within a decaying industrial structure, treating the site as both landscape and collaborator. The work was developed through collective improvisation and audiovisual recording with cameras and drones, producing a physical, erotic, and dystopian composition. The piece has been presented at Frame Rush Video Dance Festival (London, 2021), Postporn Film Festival (Warsaw, 2022), and La Ventana Interdisciplinary Short Film Festival (Chile, 2021).</p>',
+                         es: '<p><strong>Tipo:</strong> Cortometraje / videodanza<br><strong>Duraci\u00f3n:</strong> 10 min<br><strong>Formato:</strong> Video digital, HD<br><strong>Lugar:</strong> Santiago, Chile<br><strong>Direcci\u00f3n:</strong> Mar\u00eda Catalina Jorquera y Fernanda Gallardo<br><strong>Dise\u00f1o coreogr\u00e1fico:</strong> Mario Carre\u00f1o<br><strong>M\u00fasica original:</strong> Daniel Klauser<br><strong>Coproducci\u00f3n:</strong> Arboleda y Proyecto Nuclio</p><p>Mosquer\u00edo es un cortometraje performativo en el que los cuerpos se convierten en enjambre y habitan las ruinas de una planta carbon\u00edfera abandonada en las afueras de Santiago. Creada durante el estallido social en Chile, la pieza explora c\u00f3mo los cuerpos se re\u00fanen, se mueven y se transforman dentro de una estructura industrial en decadencia, tratando el sitio como paisaje y colaborador a la vez. La obra fue desarrollada a trav\u00e9s de la improvisaci\u00f3n colectiva y el registro audiovisual con c\u00e1maras y drones. Ha sido presentada en Frame Rush Video Dance Festival (Londres, 2021), Festival de Postporno (Varsovia, 2022) y La Ventana Festival Internacional de Cortometrajes Interdisciplinares (Chile, 2021).</p>' },
+
+        'proj-7-name': { en: 'Urano', es: 'Urano' },
+        'proj-7-body': { en: '<p><strong>Type:</strong> Play<br><strong>Duration:</strong> 60 min<br><strong>Location:</strong> Teatro Sidarte, Santiago, Chile<br><strong>Direction:</strong> Daniela L\u00f3pez<br><strong>Playwright:</strong> Mar\u00eda Catalina Jorquera<br><strong>Music:</strong> Francisca Maturana and Mar\u00eda Catalina Jorquera<br><strong>Cast:</strong> Eduardo V\u00e1squez, Carolina Munitiz, Tom\u00e1s Riveros, Mar\u00eda Catalina Jorquera<br><strong>Production:</strong> C\u00eda La Extranjera</p><p>Urano is a play written by the artist, who was also part of the cast and composed segments of the original music. Selected for the International Playwriting Festival La Rebeli\u00f3n de las Voces (Santiago Off) and premiered at Teatro Sidarte, Santiago. Framed within speculative fiction, Urano proposes a journey from Earth to the planet Uranus as an act of rejecting normative terrestrial gender systems. With a fragmented structure, a science-fiction atmosphere, and a hybrid language blending manifesto, poetry, and narration, the play reflects on identity, gender, dissociation, and the desire for transformation. The staging incorporated live construction of antennas, electronic devices, vocal distortion, and a spatialized soundscape manipulated in real time by actors and sound technicians.</p>',
+                         es: '<p><strong>Tipo:</strong> Obra de teatro<br><strong>Duraci\u00f3n:</strong> 60 min<br><strong>Lugar:</strong> Teatro Sidarte, Santiago, Chile<br><strong>Direcci\u00f3n:</strong> Daniela L\u00f3pez<br><strong>Dramaturgia:</strong> Mar\u00eda Catalina Jorquera<br><strong>M\u00fasica:</strong> Francisca Maturana y Mar\u00eda Catalina Jorquera<br><strong>Elenco:</strong> Eduardo V\u00e1squez, Carolina Munitiz, Tom\u00e1s Riveros, Mar\u00eda Catalina Jorquera<br><strong>Producci\u00f3n:</strong> C\u00eda La Extranjera</p><p>Urano es una obra escrita por la artista, quien tambi\u00e9n form\u00f3 parte del elenco y compuso fragmentos de la m\u00fasica original. Seleccionada para el Festival Internacional de Dramaturgia La Rebeli\u00f3n de las Voces (Santiago Off) y estrenada en Teatro Sidarte, Santiago. Enmarcada en la ciencia ficci\u00f3n especulativa, propone un viaje desde la Tierra hasta el planeta Urano como acto de rechazo a los sistemas de g\u00e9nero normativos terrestres. Con una estructura fragmentada y un lenguaje h\u00edbrido que combina manifiesto, poes\u00eda y narraci\u00f3n, la obra reflexiona sobre identidad, g\u00e9nero, disociaci\u00f3n y el deseo de transformaci\u00f3n. La puesta en escena incorpor\u00f3 la construcci\u00f3n en vivo de antenas y dispositivos electr\u00f3nicos, distorsi\u00f3n vocal y un paisaje sonoro espacializado manipulado en tiempo real.</p>' },
+
+        'agenda-1-title': { en: 'Sical\u00edpticas', es: 'Sical\u00edpticas' },
+        'agenda-1-loc':   { en: 'Santiago, Chile \u2014 Teatro F\u00e1brica', es: 'Santiago, Chile \u2014 Teatro F\u00e1brica' },
+        'agenda-2-title': { en: 'Redes as Resistance \u2014 Symposium (online)', es: 'Redes como Resistencia \u2014 Simposio (online)' },
+        'agenda-2-loc':   { en: 'La Escuela / MoMA PS1 / Museo Universitario del Chopo / La Nueva F\u00e1brica', es: 'La Escuela / MoMA PS1 / Museo Universitario del Chopo / La Nueva F\u00e1brica' },
+        'agenda-3-title': { en: 'Sical\u00edpticas', es: 'Sical\u00edpticas' },
+        'agenda-3-loc':   { en: 'Santiago, Chile \u2014 Teatro F\u00e1brica', es: 'Santiago, Chile \u2014 Teatro F\u00e1brica' },
+        'agenda-4-title': { en: 'Chucao: Sensitive Interface Biome', es: 'Chucao: Bioma de Interfaz Sensible' },
+        'agenda-4-loc':   { en: 'Soverato, Italy \u2014 IRA Festival (residency)', es: 'Soverato, Italia \u2014 IRA Festival (residencia)' },
+        'agenda-5-title': { en: 'Sical\u00edpticas', es: 'Sical\u00edpticas' },
+        'agenda-5-loc':   { en: 'Santiago, Chile \u2014 La Peluquer\u00eda Francesa', es: 'Santiago, Chile \u2014 La Peluquer\u00eda Francesa' },
+
+        'workshop-1-title': { en: 'Pelvic Movement', es: 'Movimiento P\u00e9lvico' },
+        'workshop-1-body':  { en: '<p>Pelvic Movement is a dance and movement workshop that proposes the pelvis as a starting point for exploring the body, rhythm, and collective expression. Through a methodology that combines tools from urban dance and theatricality, it invites people with no prior experience to discover their own movement \u2014 from playful dynamics to group improvisation. The process can culminate in an intervention in public space, turning the neighborhood into a stage for carnival and community celebration.</p>',
+                              es: '<p>Movimiento P\u00e9lvico es un taller de danza y movimiento que propone la pelvis como punto de partida para explorar el cuerpo, el ritmo y la expresi\u00f3n colectiva. A trav\u00e9s de una metodolog\u00eda que combina herramientas de la danza urbana y la teatralidad, invita a personas sin experiencia previa a descubrir su propio movimiento \u2014 desde din\u00e1micas de juego hasta la improvisaci\u00f3n en grupo. El proceso puede culminar en una intervenci\u00f3n en el espacio p\u00fablico, convirtiendo el barrio en escenario de carnaval y celebraci\u00f3n comunitaria.</p>' },
+        'workshop-2-title': { en: 'For the Love of Dance', es: 'Por Amor al Baile' },
+        'workshop-2-body':  { en: '<p>For the Love of Dance is a workshop that understands the party as a ritual of communal encounter. Through dynamics combining dance, movement, and theatricality, participants explore different styles and rhythms in a celebratory and inclusive environment \u2014 no prior experience needed. Unlike Pelvic Movement, this workshop approaches the body in motion more broadly, without a specific focus on one body zone, inviting each person to find their own way of dancing. The process can culminate in a collective intervention in the neighborhood\u2019s public space.</p>',
+                              es: '<p>Por Amor al Baile es un taller que entiende la fiesta como un ritual de encuentro comunitario. A trav\u00e9s de din\u00e1micas que combinan danza, movimiento y teatralidad, los participantes exploran distintos estilos y ritmos en un ambiente celebratorio e inclusivo, sin necesitar experiencia previa. A diferencia de Movimiento P\u00e9lvico, aborda el cuerpo en movimiento de manera m\u00e1s amplia, invitando a cada persona a encontrar su propia forma de bailar. El proceso puede culminar con una intervenci\u00f3n colectiva en el espacio p\u00fablico del barrio.</p>' }
+      }
+    };
+
+    function applyLang(l) {
+      document.documentElement.lang = l;
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        if (lang.t[key] && lang.t[key][l]) {
+          el.textContent = lang.t[key][l];
+        }
+      });
+      document.querySelectorAll('[data-i18n-html]').forEach(el => {
+        const key = el.getAttribute('data-i18n-html');
+        if (lang.t[key] && lang.t[key][l]) {
+          el.innerHTML = lang.t[key][l];
+        }
+      });
+      document.getElementById('langToggle').textContent = l === 'en' ? 'ES' : 'EN';
+    }
+
+    function toggleLang() {
+      const next = lang.current === 'en' ? 'es' : 'en';
+      lang.current = next;
+      applyLang(next);
+    }
+
     document.querySelectorAll('a[href^="#"]').forEach(a => {
       a.addEventListener('click', e => {
         e.preventDefault();

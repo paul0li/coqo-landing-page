@@ -106,6 +106,11 @@
       height: 100%;
       border: none;
     }
+    .hero-video video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
 
     /* SECTIONS */
     section {
@@ -130,6 +135,51 @@
       max-width: 650px;
     }
     .bio p + p { margin-top: 1.5rem; }
+
+    /* BIO — waveform "score" */
+    .bio-wave {
+      max-width: 650px;
+      margin-bottom: 3.5rem;
+    }
+    .bio-wave-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 0.85rem;
+    }
+    .bio-wave-meta .label {
+      font-size: 0.7rem;
+      font-weight: 400;
+      letter-spacing: 0.25em;
+      opacity: 0.4;
+      font-variant-numeric: tabular-nums;
+    }
+    .bio-wave svg {
+      width: 100%;
+      height: 46px;
+      display: block;
+      overflow: visible;
+    }
+    .bio-wave rect { transition: fill 0.25s ease; }
+
+    /* BIO — paragraphs as reveal "tracks" */
+    .bio-track { position: relative; }
+    .bio-track + .bio-track { margin-top: 1.6rem; }
+    .bio-track .tnum {
+      position: absolute;
+      left: -2.9rem;
+      top: 0.5rem;
+      font-size: 0.7rem;
+      letter-spacing: 0.12em;
+      opacity: 0.28;
+      font-variant-numeric: tabular-nums;
+    }
+    .bio-track p {
+      opacity: 0;
+      transform: translateY(12px);
+      transition: opacity 0.85s ease, transform 0.85s ease;
+    }
+    .bio-track.in p { opacity: 1; transform: none; }
 
     /* PROJECTS */
     .projects-list {
@@ -197,6 +247,33 @@
       align-items: center;
       justify-content: center;
       overflow: hidden;
+    }
+    .project-image.video {
+      aspect-ratio: 4 / 3;
+      border: none;
+      background: #000;
+    }
+    .project-image iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+    .project-image video {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      background: #000;
+    }
+    .project-image.canva {
+      aspect-ratio: 16 / 9;
+      border: none;
+      background: #000;
+      border-radius: 8px;
+    }
+    .project-image iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
     }
     .project-image img {
       width: 100%;
@@ -277,7 +354,6 @@
       margin-top: 1rem;
       max-width: 650px;
     }
-
     /* CONTACT */
     .contact-content {
       display: flex;
@@ -315,6 +391,7 @@
       .project-body-inner { flex-direction: column; }
       .project-image { width: 100%; min-width: unset; }
       footer { flex-direction: column; gap: 0.5rem; text-align: center; }
+      .bio-track .tnum { position: static; display: block; left: auto; top: auto; margin-bottom: 0.5rem; }
     }
   </style>
 </head>
@@ -336,12 +413,19 @@
     <h1>María Catalina Jorquera</h1>
     <p data-i18n="hero-subtitle">Director · Performer · Music Composer</p>
     <div class="hero-video">
-      <iframe src="https://player.vimeo.com/video/465818484?background=1&autoplay=1&loop=1&muted=1&quality=720p" allow="autoplay; fullscreen" allowfullscreen></iframe>
+      <video src="assets/reel_compressed.mp4" autoplay loop muted playsinline controls></video>
     </div>
   </div>
 
   <section id="bio">
     <div class="section-title" data-i18n="section-bio">Bio</div>
+    <div class="bio-wave" id="bioWave" aria-hidden="true">
+      <div class="bio-wave-meta">
+        <span class="label">&#9654;</span>
+        <span class="label" id="bioWavePct">00</span>
+      </div>
+      <svg id="bioWaveSvg" viewBox="0 0 1000 46" preserveAspectRatio="none"></svg>
+    </div>
     <div class="bio">
       <p data-i18n-html="bio-p1">María Catalina Jorquera is a Chilean artist working at the intersection of theatre, performance, sound composition, and body practice. Her work proposes immersive, political, and emotionally situated experiences that investigate the relationships between body, technology, public space, and collective memory. Her formation includes residencies at Odin Teatret / Nordisk Teaterlaboratorium in Denmark, working with Eugenio Barba, Roberta Carreri, and Carolina Pizarro, and participation in the International School of Theatre Anthropology (ISTA) in Italy.</p>
       <p data-i18n-html="bio-p2">Since 2019, she directs Proyecto Nuclio alongside choreographer and dancer Mario Carreño, developing transdisciplinary works and performative actions presented in Chile and internationally. Her practice spans urban interventions, participatory audio-performances, videodance, interactive sound installations, and community-based residencies. Among her works: K-minata (2021, Bienal de Artes Mediales, MAC Santiago), Fiestología (2024, Centex Valparaíso, funded by the Ministry of Cultures of Chile), Mosquerío (2020, videodanza in circulation at Frame Rush Video Dance Festival, London; Postporn Film Festival, Warsaw; and Marché de l'Illustration Impertinente, Paris), and the co-direction of the choreography of Niñx, a music video by Ana Tijoux.</p>
@@ -365,7 +449,7 @@
         <div class="project-body">
           <div class="project-body-inner">
             <div class="project-image">
-              <span class="placeholder">Photo</span>
+              <img src="assets/chucao.png" alt="Chucao: Sensitive Interface Biome">
             </div>
             <div class="project-info" data-i18n-html="proj-1-body">
               <p><strong>Type:</strong> Live arts performance</p>
@@ -388,7 +472,7 @@
         <div class="project-body">
           <div class="project-body-inner">
             <div class="project-image">
-              <span class="placeholder">Photo</span>
+              <img src="assets/psicalipticas.png" alt="Sicalípticas">
             </div>
             <div class="project-info" data-i18n-html="proj-2-body">
               <p><strong>Type:</strong> Experimental cabaret collective</p>
@@ -410,7 +494,7 @@
         <div class="project-body">
           <div class="project-body-inner">
             <div class="project-image">
-              <span class="placeholder">Photo</span>
+              <img src="assets/fiestologia.jpeg" alt="Fiestología">
             </div>
             <div class="project-info" data-i18n-html="proj-3-body">
               <p><strong>Type:</strong> Audio performance<br><strong>Duration:</strong> 60 min<br><strong>Format:</strong> Binaural sound + mobile audio devices<br><strong>Location:</strong> Valparaíso, Chile<br><strong>Direction and Music Production:</strong> María Catalina Jorquera<br><strong>Choreography and DJ Set:</strong> Mario Carreño<br><strong>Production:</strong> Proyecto Nuclio and Centex</p>
@@ -430,8 +514,8 @@
         </div>
         <div class="project-body">
           <div class="project-body-inner">
-            <div class="project-image">
-              <span class="placeholder">Photo</span>
+            <div class="project-image video">
+              <video src="assets/mayo.mp4" muted controls playsinline></video>
             </div>
             <div class="project-info" data-i18n-html="proj-4-body">
               <p><strong>Type:</strong> Artistic residency and public intervention<br><strong>Duration:</strong> 2 weeks (residency) + performative event<br><strong>Format:</strong> Community workshops, procession, ritual performance<br><strong>Location:</strong> Panimávida, Maule Region, Chile<br><strong>Direction:</strong> María Catalina Jorquera<br><strong>Choreographic design:</strong> Mario Carreño<br><strong>Production:</strong> Proyecto Nuclio and Fundación Buenas Raíces</p>
@@ -452,7 +536,7 @@
         <div class="project-body">
           <div class="project-body-inner">
             <div class="project-image">
-              <span class="placeholder">Photo</span>
+              <img src="assets/kminata.png" alt="K-minata">
             </div>
             <div class="project-info" data-i18n-html="proj-5-body">
               <p><strong>Type:</strong> Audio-guided urban walk<br><strong>Duration:</strong> 45 min<br><strong>Format:</strong> Portable sound system, audio track, and DJ set<br><strong>Location:</strong> Santiago, Chile<br><strong>Direction:</strong> María Catalina Jorquera<br><strong>Choreographic Design:</strong> Mario Carreño<br><strong>DJ Set:</strong> LoveShai<br><strong>Production:</strong> Proyecto Nuclio</p>
@@ -472,8 +556,11 @@
         </div>
         <div class="project-body">
           <div class="project-body-inner">
-            <div class="project-image">
-              <span class="placeholder">Photo</span>
+            <div class="project-image canva">
+              <div style="position: relative; width: 100%; height: 100%; overflow: hidden; border-radius: 8px;">
+                <iframe loading="lazy" style="position: absolute; width: 100%; height: 100%; top: 0; left: 0; border: none; padding: 0; margin: 0;" src="https://www.canva.com/design/DAHLSub8UWo/3XVroX1UM-XOyHBZgXuuvg/view?embed" allowfullscreen="allowfullscreen" allow="fullscreen">
+                </iframe>
+              </div>
             </div>
             <div class="project-info" data-i18n-html="proj-6-body">
               <p><strong>Type:</strong> Short film / videodance<br><strong>Duration:</strong> 10 min<br><strong>Format:</strong> Digital video, HD<br><strong>Location:</strong> Santiago, Chile<br><strong>Direction:</strong> María Catalina Jorquera and Fernanda Gallardo<br><strong>Choreographic Design:</strong> Mario Carreño<br><strong>Original Music:</strong> Daniel Klauser<br><strong>Co-production:</strong> Arboleda and Proyecto Nuclio</p>
@@ -494,7 +581,7 @@
         <div class="project-body">
           <div class="project-body-inner">
             <div class="project-image">
-              <span class="placeholder">Photo</span>
+              <img src="assets/urano.png" alt="Urano">
             </div>
             <div class="project-info" data-i18n-html="proj-7-body">
               <p><strong>Type:</strong> Play<br><strong>Duration:</strong> 60 min<br><strong>Location:</strong> Teatro Sidarte, Santiago, Chile<br><strong>Direction:</strong> Daniela López<br><strong>Playwright:</strong> María Catalina Jorquera<br><strong>Music:</strong> Francisca Maturana and María Catalina Jorquera<br><strong>Cast:</strong> Eduardo Vásquez, Carolina Munitiz, Tomás Riveros, María Catalina Jorquera<br><strong>Production:</strong> Cía La Extranjera</p>
@@ -577,7 +664,7 @@
     <div class="section-title" data-i18n="section-contact">Contact</div>
     <div class="contact-content">
       <a href="mailto:mariacatalina.jb@gmail.com">mariacatalina.jb@gmail.com</a>
-      <a href="https://www.instagram.com/" target="_blank" rel="noopener" data-i18n="contact-instagram">Instagram</a>
+      <a href="https://www.instagram.com/coqodeserena" target="_blank" rel="noopener" data-i18n="contact-instagram">Instagram</a>
     </div>
   </section>
 
@@ -690,7 +777,75 @@
         if (target) target.scrollIntoView({ behavior: 'smooth' });
       });
     });
+
+    /* ===== BIO — waveform "score" ===== */
+    (function () {
+      const ns = 'http://www.w3.org/2000/svg';
+      const svg = document.getElementById('bioWaveSvg');
+      const pct = document.getElementById('bioWavePct');
+      const bioSection = document.getElementById('bio');
+      const bioCol = bioSection.querySelector('.bio');
+      if (!svg || !bioCol) return;
+
+      const paras = [...bioCol.querySelectorAll('p')];
+      paras.forEach((p, i) => {
+        const track = document.createElement('div');
+        track.className = 'bio-track';
+        const num = document.createElement('span');
+        num.className = 'tnum';
+        num.textContent = String(i + 1).padStart(2, '0');
+        bioCol.insertBefore(track, p);
+        track.appendChild(num);
+        track.appendChild(p);
+      });
+
+      const N = 96;
+      let seed = 23;
+      const rnd = () => (seed = (seed * 9301 + 49297) % 233280) / 233280;
+      const bars = [];
+      for (let i = 0; i < N; i++) {
+        const a = (0.16 + Math.abs(Math.sin(i * 0.42)) * 0.55 + rnd() * 0.4) * 21;
+        const r = document.createElementNS(ns, 'rect');
+        r.setAttribute('x', i * (1000 / N));
+        r.setAttribute('y', 23 - a);
+        r.setAttribute('width', (1000 / N) - 1.4);
+        r.setAttribute('height', a * 2);
+        r.setAttribute('rx', 0.7);
+        r.setAttribute('fill', 'rgba(232,232,232,0.14)');
+        svg.appendChild(r);
+        bars.push(r);
+      }
+      const play = document.createElementNS(ns, 'line');
+      play.setAttribute('y1', -3);
+      play.setAttribute('y2', 49);
+      play.setAttribute('x1', 0);
+      play.setAttribute('x2', 0);
+      play.setAttribute('stroke', 'rgba(232,232,232,0.75)');
+      play.setAttribute('stroke-width', '2');
+      svg.appendChild(play);
+
+      function update() {
+        const r = bioSection.getBoundingClientRect();
+        const line = window.innerHeight * 0.5;
+        let prog = (line - r.top) / r.height;
+        prog = Math.max(0, Math.min(1, prog));
+        play.setAttribute('x1', prog * 1000);
+        play.setAttribute('x2', prog * 1000);
+        pct.textContent = String(Math.round(prog * 99)).padStart(2, '0');
+        const cut = prog * N;
+        for (let i = 0; i < N; i++) {
+          bars[i].setAttribute('fill', i <= cut ? 'rgba(232,232,232,0.5)' : 'rgba(232,232,232,0.14)');
+        }
+      }
+      window.addEventListener('scroll', update, { passive: true });
+      window.addEventListener('resize', update);
+      update();
+
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('in'); });
+      }, { threshold: 0.2, rootMargin: '0px 0px -10% 0px' });
+      bioCol.querySelectorAll('.bio-track').forEach(t => io.observe(t));
+    })();
   </script>
 
-</body>
 </html>
